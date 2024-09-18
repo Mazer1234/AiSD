@@ -262,6 +262,32 @@ void print_set(Set *set)
     cout << endl;
 } // finish list
 
+/**
+ * @brief Поиск одинаковых элементов в битовом массиве и подсчёт времени выполнения.
+ * @param a - первый массив.
+ * @param b - второй массив.
+ * @param c - третий массив.
+ * @param d - четвёртый массив.
+ * @param arr - итоговый массив.
+ */
+void process_bits(bool* a, bool* b, bool* c, bool* d, bool* arr){
+    start_timer();
+    for (int j = 0; j < REPEAT_COUNT; j++){
+    for (int i = 0; i < 26; i++)
+    {
+        if (a[i] == 1 && b[i] == 1 && c[i] == 1 && d[i] == 1)
+        {
+            arr[i] = 1;
+        }
+        else
+        {
+            arr[i] = 0;
+        }
+    }
+    }
+    end_timer("Bits array", REPEAT_COUNT);
+}
+
  /**
   * @brief Создаём битовый массив, который содержит 0 или 1, и сразу находим общие элементы.
   * @param arr - Массив из 0 и 1.
@@ -284,11 +310,11 @@ void find_bool(bool *arr, char *A, char *B, char *C, char *D, int num)
         {
             if (A[j] == i + 96)
             {
-                a[i - 1] = true;
+                a[i - 1] = 1;
             }
-            else
+            else if(a[i-1] != 1)
             {
-                a[i - 1] = false;
+                a[i - 1] = 0;
             }
         }
     }
@@ -298,11 +324,11 @@ void find_bool(bool *arr, char *A, char *B, char *C, char *D, int num)
         {
             if (B[j] == i + 96)
             {
-                b[i - 1] = true;
+                b[i - 1] = 1;
             }
-            else
+            else if (b[i-1] != 1)
             {
-                b[i - 1] = false;
+                b[i - 1] = 0;
             }
         }
     }
@@ -312,11 +338,11 @@ void find_bool(bool *arr, char *A, char *B, char *C, char *D, int num)
         {
             if (C[j] == i + 96)
             {
-                c[i - 1] = true;
+                c[i - 1] = 1;
             }
-            else
+            else if (c[i-1] != 1)
             {
-                c[i - 1] = false;
+                c[i - 1] = 0;
             }
         }
     }
@@ -326,26 +352,18 @@ void find_bool(bool *arr, char *A, char *B, char *C, char *D, int num)
         {
             if (D[j] == i + 96)
             {
-                d[i - 1] = true;
+                d[i - 1] = 1;
             }
-            else
+            else if (d[i-1] != 1)
             {
-                d[i - 1] = false;
+                d[i - 1] = 0;
             }
         }
     }
-    for (int i = 0; i < 26; i++)
-    {
-        if (a[i] == b[i] && c[i] == d[i] && a[i] == c[i] && a[i] == true)
-        {
-            arr[i] = true;
-        }
-        else
-        {
-            arr[i] = false;
-        }
-    }
+    process_bits(a, b, c, d, arr);
 }
+
+
 
 /**
  * @brief Вывод элементов побитового массива индекс + 71(код буквы 'a').
@@ -357,9 +375,9 @@ void print_bits(bool *array)
     cout << "Finish array of bits: ";
     for (int i = 1; i <= 26; i++)
     {
-        if (array[i])
+        if (array[i-1])
         {
-            a = i + 71;
+            a = i + 96;
             cout << a << " ";
         }
     }
@@ -511,11 +529,7 @@ int main()
     cout << "\n----------------------\nBITS ARRAY" << endl;
     words = (bool *)malloc(26 * sizeof(bool)); // BITS ARRAY
 
-    start_timer();
-    for (int i = 0; i < REPEAT_COUNT; i++)
-        find_bool(words, A, B, C, D, num);
-    end_timer("Bits Array", REPEAT_COUNT);
-
+    find_bool(words, A, B, C, D, num);
 
     print_bits(words);
 
