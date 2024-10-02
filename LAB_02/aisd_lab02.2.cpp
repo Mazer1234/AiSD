@@ -1,7 +1,7 @@
-//#include "array.h"
+#include "array.h"
 //#include "list.h"
 //#include "barray.h"
-#include "mword.h"
+//#include "mword.h"
 #include <iostream>
 #define REPEAT_COUNT 1000000;
 

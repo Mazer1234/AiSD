@@ -126,6 +126,7 @@ void Set::print_key()
             cout << a << " ";
         }
     }
+    cout << endl;
 }
 
 void Set::timer(vector<bool> b, vector<bool> c, vector<bool> d){

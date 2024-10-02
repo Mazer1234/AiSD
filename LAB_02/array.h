@@ -2,15 +2,13 @@
 #include <vector>
 #include <chrono>
 using namespace std;
-using Clock = std::chrono::high_resolution_clock;
-using TimePoint = std::chrono::time_point<Clock>;
+
 
 class Set{
     private:
     char name;
     int num;
     vector<char> set;
-    TimePoint start_timer, end_timer;
 
     public:
     void setName(char name);
