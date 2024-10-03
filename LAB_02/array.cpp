@@ -123,7 +123,7 @@ void Set::print_key()
     cout << "Finish array: ";
     for (int i = 0; i < num; i++)
     {
-        if (isalpha(set[i]))
+        if (isalpha(set[i]) && set[i] >= 96)
         {
             cout << set[i];
         }
