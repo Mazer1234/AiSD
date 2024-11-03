@@ -1,5 +1,5 @@
-//#include "array.h"
-#include "list.h"
+#include "array.h"
+//#include "list.h"
 //#include "barray.h"
 //#include "mword.h"
 #include <iostream>

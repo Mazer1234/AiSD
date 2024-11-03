@@ -11,6 +11,8 @@ class Set{
     vector<char> set;
 
     public:
+    Set();
+    ~Set();
     void setName(char name);
     void setNum(int num);
     vector<char> getKey();

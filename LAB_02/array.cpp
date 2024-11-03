@@ -143,3 +143,11 @@ void Set::timer(vector<char> b, vector<char> c, vector<char> d){
     double t = double(t2 - t1) / CLOCKS_PER_SEC;
     cout << "Time " << t << "*10(-5) sec" << endl;
 }
+
+Set::~Set(){
+    cout << "Set destroyed"<< endl;
+}
+
+Set::Set(){
+    cout << "Set created" << endl;
+}
