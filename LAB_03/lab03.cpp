@@ -70,7 +70,7 @@ bool promtUser(int depth, const char* position, char currentSymbol) {
             break;
         }
     }
-    return responce=='1';
+    return responce == '1';
 }
 /**
  * @brief Создание узла.
@@ -81,7 +81,7 @@ bool promtUser(int depth, const char* position, char currentSymbol) {
 Node* Tree::MakeNode(int depth, const char* position, int pred){
     if (depth >= maxrow) return nullptr; // Проверка на максимальную глубину
     Node *v = nullptr;
-    if (num <= maxnum && promtUser(depth, position, num)){
+    if (num <= maxnum && promtUser(depth, position, maxnum)){
         v = new Node();
         v->pred = pred;
         v->d = maxnum--;
